@@ -8,12 +8,14 @@ class Dashboard extends Component {
      }
     render() { 
         return ( 
-            <div id="navbar">
-                <Navbar />
-                    <p className="title">Pending Jobs</p>
-                        <div className="columns is-multiline">
+            <div>
+                <div id="navbar">
+                    <Navbar />
+                </div>
+                    <div className="columns is-multiline">
+                        <div className="column is-2"></div>
                             <div className="column is-8">
-                                <JobCard 
+                                <JobCard
                                     company="Google"
                                     dateApplied="June"
                                     posting="posting"
@@ -21,24 +23,15 @@ class Dashboard extends Component {
                                     notes="applied on indeed"
                                     interview="no"
                                     phoneInterview="yes"
-                                    />
-                                </div>
-            <p className="title">Did not move on</p>
-            <div className="column is-8">
-                    <JobCard
-                        company="Google"
-                        dateApplied="June"
-                        posting="posting"
-                        status="Applied"
-                        notes="applied on indeed"
-                        interview="no"
-                        phoneInterview="yes"
-                        />
-                    </div>
+                                />
+                        </div>
+                    <div className="column is-2"></div>
+                </div>
             </div>
-        </div>
         );
     }
 }
  
 export default Dashboard;
+
+

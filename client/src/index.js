@@ -11,7 +11,7 @@ import rootReducer from './Redux/reducer'
 
 const store = createStore(
     rootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__&& window.REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
 
@@ -23,12 +23,10 @@ ReactDOM.render(
                     <Route exact path="/" component={App} />
                     <Route path="/dashboard" component={Dashboard} />
                     {/* <Route path="/addjob" component={Forms} /> */}
-                </Switch>
+                </Switch> 
             </BrowserRouter>
         </BrowserRouter>
     </Provider>,
-
-
 document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

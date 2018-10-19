@@ -1,0 +1,1 @@
+export const REMOVE_JOB = 'REMOVE_JOB';

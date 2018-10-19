@@ -6,20 +6,13 @@ const JobCard = props => {
         <div className="card container" id="card">
             <div className="card content">
                 <div>
-                    {/* Move this button to the right */}
-                    <a className="button is-danger">
-                        <span>Remove</span>
-                        <span className="icon is-small">
-                            <i className="fas fa-times"></i>
-                        </span>
-                    </a>
                 </div>
                 <table className="table is-narrow">
                     <tbody>
                         <tr>
                             <td>Company: {props.company}</td>
                             <td>Date Applied: {props.dateApplied}</td>
-                            <td><a href={props.url}>Link to Job Post</a></td>
+                            <td><a className="button is-danger"><span>Remove</span></a></td>
                         </tr>
                         <tr>
                             <td>Status: {props.status}</td>
@@ -28,6 +21,9 @@ const JobCard = props => {
                         <tr>
                             <td>Interview: {props.interview}</td>
                             <td>Phone Interview: {props.phoneInterview}</td>
+                        </tr>
+                        <tr>
+                            <td><a href={props.url}>Link to Job Post</a></td>
                         </tr>
                     </tbody>
                 </table>
