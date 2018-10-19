@@ -1,5 +1,7 @@
 import {
-    REMOVE_JOB
+    REMOVE_JOB,
+    CREATE_USER,
+    NEW_JOB
     } from '../constants'
 const initialState = {
     jobs: [],
@@ -11,8 +13,17 @@ const rootReducer = (state = initialState, action) => {
         case REMOVE_JOB:
             return {
                 ...state,
-                jobs: state.watchlist.filter((i => i !== action.payload))
+                jobs: state.jobs.filter((i => i !== action.payload))
             }
+        case NEW_JOB:
+        return {
+            ...state,
+            jobs:[...state.jobs, action.payload]
+        }
+        case CREATE_USER:
+        return {
+            ...state,
+        }
         default: return state
 
     }

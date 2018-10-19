@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import JobCard from './JobCard'
 import Navbar from '../navbar/navbar'
 
 class Dashboard extends Component {
     state = { 
-        jobs: []
-     }
+     
+    }
 
      removeJob = () => {
          
@@ -31,19 +32,19 @@ class Dashboard extends Component {
                                 <div className="level-item has-text-centered">
                                     <div>
                                         <p className="heading">Jobs applied to</p>
-                                        <p className="title">200</p>
+                                        <p className="title">0</p>
                                     </div>
                                 </div>
                             <div className="level-item has-text-centered">
                                 <div>
                                     <p className="heading">Need to follow-up</p>
-                                    <p className="title">25</p>
+                                    <p className="title">0</p>
                                 </div>
                             </div>
                             <div className="level-item has-text-centered">
                                 <div>
                                     <p className="heading">Upcoming interviews</p>
-                                    <p className="title">3</p>
+                                    <p className="title">0</p>
                                 </div>
                             </div>
                         </nav>
@@ -52,24 +53,33 @@ class Dashboard extends Component {
                 </div>
                     <div className="columns is-multiline">
                         <div className="column"></div>
-                            <div className="column is-6">
-                                <JobCard
-                                    company="Google"
-                                    dateApplied="June"
-                                    posting="posting"
-                                    status="Applied"
-                                    notes="applied on indeed"
-                                    interview="no"
-                                    phoneInterview="yes"
-                                />
-                        </div>
+                            {
+                                this.props.jobs.map((item, index) => {
+                                    return (
+                                        <div key={index} className="column is-6">
+                                            <JobCard 
+                                            company={item.companyName}
+                                            dateApplied={item.dateApplied}
+                                            url={item.linkToJob}
+                                            status={item.jobStatus}
+                                            notes={item.notes}
+                                            index={index}
+                                            />
+                                        </div>
+                                    )
+                                })
+                            }
                     <div className="column"></div>
                 </div>
             </div>
         );
     }
 }
+
+const mapStateToProps = state => ({
+    jobs: state.jobs
+})
  
-export default Dashboard;
+export default connect(mapStateToProps, null)(Dashboard)
 
 

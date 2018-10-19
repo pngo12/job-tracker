@@ -14,7 +14,7 @@ const JobCard = props => {
                             <td>Company: {props.company}</td>
                             <td>Date Applied: {props.dateApplied}</td>
                             <td><div className="button is-danger">
-                                <span onClick={() => this.props.removeJob(index)}>Remove</span>
+                                <span onClick={() => props.removeJob(index)}>Remove</span>
                             </div></td>
                         </tr>
                         <tr>
@@ -26,7 +26,7 @@ const JobCard = props => {
                             <td>Phone Interview: {props.phoneInterview}</td>
                         </tr>
                         <tr>
-                            <td><a href={props.url}>Link to posting</a></td>
+                            <td><a href={props.url} target="_blank">Link to posting</a></td>
                         </tr>
                     </tbody>
                 </table>

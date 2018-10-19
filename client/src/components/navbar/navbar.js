@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
+import {Redirect} from 'react-router-dom'
 import logo from '../images/logo.png'
 
-const Navbar = () => {
+class Navbar extends Component {
+    state = {
+        clicked: false
+    }
+    redirectJob = () => {
+        this.setState({clicked: true})
+    }
+    render(){
+        if(this.state.clicked === true) {
+            return <Redirect to='/newjob' />
+        }
     return (
         <nav className="navbar container">
             <div className="navbar-brand container">
@@ -11,13 +22,14 @@ const Navbar = () => {
         </div>
             <div className="navbar-end">
             <div className="navbar-item">
-                <a className="button is-primary">
+                <a onClick={this.redirectJob} className="button is-primary">
                     <strong>Add a Job</strong>
                 </a>
             </div>
             </div>
         </nav>
     );
+    }
 }
         
 export default Navbar;
