@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace server
 {
-  public class User
+  public class Users
   {
     [Key]
     public int user_id {  get; set; }
@@ -16,21 +16,19 @@ namespace server
 
     public string password {get; set;}
 
-    [ForeignKey("job_id")]
 
     public int job_id {get;set;}
+    [ForeignKey("job_id")]
 
-    public Job job {get;set;}
+    public Jobs job {get;set;}
 
 
-    public User()
+    public Users()
     {
 
     }
 
-
-
-    public User(string n, string e, string pw)
+    public Users(string n, string e, string pw)
     {
       this.name = n;
       this.email = e;

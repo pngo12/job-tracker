@@ -9,8 +9,8 @@ namespace server
 
     }
     
-    public DbSet<User> users  {get;set;}    
-    public DbSet<Job>  jobs   {get;set;}    
+    public DbSet<Users>        users       {get;set;}    
+    public DbSet<Jobs>         jobs        {get;set;}    
     public DbSet<StatusType>  statusTypes {get;set;}    
  
   }

@@ -7,13 +7,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace server.Controllers
 {
-  [Route("api/users")]
+  [Route("api/jobs")]
   [ApiController]
-  public class UserController : ControllerBase
+  public class JobssController : ControllerBase
   {
     private TrackerContext _context;
 
-    public UserController(TrackerContext context)
+    public JobssController(TrackerContext context)
     {
       _context = context;
     }
@@ -22,17 +22,17 @@ namespace server.Controllers
     [HttpGet]
     public IActionResult Get()
     {
-      if (_context.users.ToList().Count == 0)
+      if (_context.jobs.ToList().Count == 0)
       {
         return NotFound();
       }
-      return Ok(_context.users.Include(j => j.job).ToList());
+      return Ok(_context.jobs.ToList());
     }
 
-    [HttpGet("{id}", Name = "Getuser")]
+    [HttpGet("{id}", Name = "GetJobs")]
     public ActionResult<Users> GetById(int id)
     {
-      Users item = _context.users.Where(u => u.user_id == id).Include(j => j.job).FirstOrDefault();
+      Jobs item = _context.jobs.Where(j => j.job_id == id).FirstOrDefault();
       if (item == null)
       {
         return NotFound();
@@ -41,28 +41,28 @@ namespace server.Controllers
     }
 
     [HttpPost]
-    public IActionResult Post([FromBody]Users user)
+    public IActionResult Post([FromBody]Jobs job)
     {
-      if (user == null)
+      if (job == null)
       {
         return BadRequest();
       }
-      _context.users.Add(user);
+      _context.jobs.Add(job);
       _context.SaveChanges();
 
-      return CreatedAtRoute("Getuser", new {id = user.user_id}, user);
+      return CreatedAtRoute("Getjob", new {id = job.job_id}, job);
     }
 
 
     [HttpPut("{id}")]
-    public IActionResult Put(int id, [FromBody]Users u)
+    public IActionResult Put(int id, [FromBody]Jobs j)
     {
-      if (u == null || u.user_id != id)
+      if (j == null || j.job_id != id)
       {
         return BadRequest();
       }
 
-      _context.users.Update(u);
+      _context.jobs.Update(j);
       _context.SaveChanges();
       return NoContent();
 
@@ -71,14 +71,14 @@ namespace server.Controllers
     [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
-      Users u = _context.users.Find(id);
-      if (u == null)
+      Jobs j = _context.jobs.Find(id);
+      if (j == null)
       {
         return NotFound();
       }
-      _context.users.Remove(u);
+      _context.jobs.Remove(j);
       _context.SaveChanges();
-      return Ok(u);
+      return Ok(j);
     }
 
   }
