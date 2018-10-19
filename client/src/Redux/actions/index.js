@@ -11,7 +11,7 @@ export const removeJob = job => dispatch => {
 
 export const createUser = (newUser) => dispatch => {
     console.log(newUser)
-    axios.post('http://localhost:5000/api/users',newUser )
+    axios.post('http://localhost:5000/api/users', newUser)
     .then(res => {
         console.log(res.data)
         dispatch({ type: CREATE_USER, payload: res.data })

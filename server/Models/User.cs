@@ -17,10 +17,10 @@ namespace server
     public string password {get; set;}
 
 
-    public int job_id {get;set;}
-    [ForeignKey("job_id")]
+    // public int job_id {get;set;}
+    // [ForeignKey("job_id")]
 
-    public Jobs job {get;set;}
+    // public Jobs job {get;set;}
 
 
     public Users()
@@ -33,6 +33,7 @@ namespace server
       this.name = n;
       this.email = e;
       this.password = pw;
+      // this.job_id = 1;
     }
   }
 }
