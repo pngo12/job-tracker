@@ -1,7 +1,10 @@
 import React from 'react';
+import {connect} from 'react-redux'
+import { removeJob } from '../../Redux/actions'
 import './dashboard.css'
 
 const JobCard = props => {
+    let index = props.index
     return ( 
         <div className="card container" id="card">
             <div className="card content">
@@ -10,7 +13,9 @@ const JobCard = props => {
                         <tr>
                             <td>Company: {props.company}</td>
                             <td>Date Applied: {props.dateApplied}</td>
-                            <td><a className="button is-danger"><span>Remove</span></a></td>
+                            <td><div className="button is-danger">
+                                <span onClick={() => this.props.removeJob(index)}>Remove</span>
+                            </div></td>
                         </tr>
                         <tr>
                             <td>Status: {props.status}</td>
@@ -21,7 +26,7 @@ const JobCard = props => {
                             <td>Phone Interview: {props.phoneInterview}</td>
                         </tr>
                         <tr>
-                            <td><a href={props.url}>Link to Job Post</a></td>
+                            <td><a href={props.url}>Link to posting</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -29,5 +34,9 @@ const JobCard = props => {
         </div>
      );
 }
+
+const mapDispatchToProps = dispatch => ({
+    removeJob: index => dispatch(removeJob(index))
+})
  
-export default JobCard;
+export default connect(null, mapDispatchToProps)(JobCard)

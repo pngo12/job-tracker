@@ -6,6 +6,10 @@ class Dashboard extends Component {
     state = { 
         jobs: []
      }
+
+     removeJob = () => {
+         
+     }
     render() { 
         return ( 
             <div>

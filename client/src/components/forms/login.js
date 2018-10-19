@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import {createUser} from '../../Redux/actions'
 
 class Login extends Component {
     state = {
@@ -61,7 +62,7 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    // createUser: (email, password) => dispatch(createUser({email,password}))
+    createUser: (email, password) => dispatch(createUser({email,password}))
 })
 
 export default connect(null, mapDispatchToProps)(Login)
