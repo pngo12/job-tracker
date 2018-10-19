@@ -5,8 +5,6 @@ const JobCard = props => {
     return ( 
         <div className="card container" id="card">
             <div className="card content">
-                <div>
-                </div>
                 <table className="table is-narrow">
                     <tbody>
                         <tr>

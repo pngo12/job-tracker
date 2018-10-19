@@ -3,7 +3,7 @@ import logo from '../images/logo.png'
 
 const Navbar = () => {
     return (
-        <nav class="navbar" role="navigation" aria-label="main navigation">
+        <nav class="navbar container">
             <div class="navbar-brand container">
                 <a class="navbar-item" href="/">
                 <img src={logo} width="140" height="40" alt="a logo"/>

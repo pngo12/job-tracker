@@ -3,15 +3,19 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
-import Dashboard from './components/dashboard/dashboard'
 import {Provider} from 'react-redux'
-import {createStore} from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './Redux/reducer'
+import Dashboard from './components/dashboard/dashboard'
+import Signup from './components/forms/signup'
+import Login from './components/forms/login'
+import thunk from 'redux-thunk'
 
 
 const store = createStore(
     rootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    // applyMiddleware(thunk)
 )
 
 
@@ -22,7 +26,8 @@ ReactDOM.render(
                 <Switch>
                     <Route exact path="/" component={App} />
                     <Route path="/dashboard" component={Dashboard} />
-                    {/* <Route path="/addjob" component={Forms} /> */}
+                    <Route path="/signup" component={Signup} />
+                    <Route path="/login" component={Login} />
                 </Switch> 
             </BrowserRouter>
         </BrowserRouter>

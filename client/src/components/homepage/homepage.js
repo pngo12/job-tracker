@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Footer from '../footer/footer';
 import {Link} from 'react-router-dom';
+import './homepage.css'
 
 
 class HomePage extends Component {
@@ -8,16 +9,16 @@ class HomePage extends Component {
     render() { 
         return ( 
             <div>
-                <section className="hero is-info is-fullheight">
+                <section className="hero is-fullheight home-color has-text-centered">
                     <div className="hero-body">
                         <div className="container">
                             <h1 className="title">
-                                JobHunt
+                                Introducing JobHunt
                             </h1>
                             <h2 className="subtitle">
-                                A new way of getting a job
+                                Your new job starts now.
                             </h2>
-                            <Link className='button' to='/dashboard'>Get Started</Link>
+                            <Link className='button' to='/dashboard'>Get Started fam</Link>
                         </div>
                     </div>
                 </section>
