@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
+using System.Text;
 
 ///Usings for Authentication
 using Microsoft.IdentityModel.Tokens;
@@ -39,6 +40,20 @@ namespace server
             services.AddEntityFrameworkNpgsql().AddDbContext<TrackerContext>
             (options => options.UseNpgsql(connectionString));
             services.AddCors();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                    .AddJwtBearer(options =>
+                    {
+                      options.TokenValidationParameters = new TokenValidationParameters
+                      {
+                        ValidateIssuer           = false,
+                        ValidateLifetime         = true,
+                        ValidateAudience         = false,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey         =  new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SuperTopSecretKeyDontTellAnyOne"))
+                      };
+
+                    });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +67,7 @@ namespace server
             {
                 app.UseHsts();
             }
+            app.UseAuthentication();
             app.UseCors(builder =>
                           builder.WithOrigins("*").AllowAnyHeader().AllowAnyMethod());
 
