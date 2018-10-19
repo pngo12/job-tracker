@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import {createUser} from '../../Redux/actions'
 
 class SignUp extends Component {
     state = {
+        name: '',
         email: '',
         password: '',
         confirm: '',
@@ -13,10 +15,10 @@ class SignUp extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        let {email, password, confirm} = this.state
-        if(password !== confirm) window.alert('Please make sure the passwords match');
-        // this.props.createUser({email,password})
-        this.setState({success: true})
+        let {email, password, confirm, name} = this.state
+        if(password !== confirm) window.alert('Please make sure the passwords match')
+        if (password === confirm) this.setState({ success: true })
+        this.props.createUser({name,email,password})
     }
 
     handleOnChange = e => {
@@ -40,6 +42,16 @@ class SignUp extends Component {
                         <div className="column is-4">
                             <p className="title">Let's get you signed up</p>
                         <form onSubmit={this.handleSubmit}>
+                            <div className="field">
+                                <label>Name</label>
+                                <input
+                                    type="name"
+                                    onChange={this.handleOnChange}
+                                    value={this.state.name}
+                                    name='name'
+                                    className="input"
+                                />
+                            </div>
                             <div className="field">
                                 <label>Email</label>
                                 <input
@@ -85,7 +97,7 @@ class SignUp extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    // createUser: (email, password) => dispatch(createUser({email,password}))
+    createUser: (email, password) => dispatch(createUser({email,password}))
 })
 
 export default connect(null, mapDispatchToProps)(SignUp)

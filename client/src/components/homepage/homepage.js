@@ -18,7 +18,7 @@ class HomePage extends Component {
                             <h2 className="subtitle">
                                 Your new job starts now.
                             </h2>
-                            <Link className='button' to='/dashboard'>Get Started fam</Link>
+                            <Link className='button' to='/signup'>Get Started fam</Link>
                         </div>
                     </div>
                 </section>
