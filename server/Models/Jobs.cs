@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace server
 {
-  public class Job
+  public class Jobs
   {
     [Key] public int job_id  {get;set;}
 
@@ -17,12 +17,12 @@ namespace server
 
     public string link_to_job_post {get;set;}
 
-    public Job()
+    public Jobs()
     {
 
     }
 
-    public Job(DateTime dt,int id, string cn, string l2jp)
+    public Jobs(DateTime dt,int id, string cn, string l2jp)
     {
       this.date_added = dt;
       this.statustype_id = id;

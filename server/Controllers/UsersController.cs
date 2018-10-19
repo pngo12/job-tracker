@@ -26,13 +26,13 @@ namespace server.Controllers
       {
         return NotFound();
       }
-      return Ok(_context.users.ToList());
+      return Ok(_context.users.Include(j => j.job).ToList());
     }
 
     [HttpGet("{id}", Name = "Getuser")]
-    public ActionResult<User> GetById(int id)
+    public ActionResult<Users> GetById(int id)
     {
-      User item = _context.users.Where(c => c.user_id == id).Include("details").FirstOrDefault();
+      Users item = _context.users.Where(u => u.user_id == id).Include(j => j.job).FirstOrDefault();
       if (item == null)
       {
         return NotFound();
@@ -41,7 +41,7 @@ namespace server.Controllers
     }
 
     [HttpPost]
-    public IActionResult Post([FromBody]User user)
+    public IActionResult Post([FromBody]Users user)
     {
       if (user == null)
       {
@@ -55,7 +55,7 @@ namespace server.Controllers
 
 
     [HttpPut("{id}")]
-    public IActionResult Put(int id, [FromBody]User u)
+    public IActionResult Put(int id, [FromBody]Users u)
     {
       if (u == null || u.user_id != id)
       {
@@ -71,7 +71,7 @@ namespace server.Controllers
     [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
-      User u = _context.users.Find(id);
+      Users u = _context.users.Find(id);
       if (u == null)
       {
         return NotFound();
