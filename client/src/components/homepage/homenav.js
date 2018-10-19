@@ -3,14 +3,14 @@ import logo from '../images/logo.png'
 
 const homeNav = () => {
     return (
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand container">
-                <a class="navbar-item" href="/">
+        <nav className="navbar" role="navigation" aria-label="main navigation">
+            <div className="navbar-brand container">
+                <a className="navbar-item" href="/">
                     <img src={logo} width="140" height="40" alt="a logo" />
                 </a>
             </div>
-            <div class="navbar-end">
-                <div class="navbar-item">
+            <div className="navbar-end">
+                <div className="navbar-item">
 
                 </div>
             </div>

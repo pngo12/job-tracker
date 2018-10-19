@@ -15,7 +15,7 @@ class SignUp extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        let {email, password, confirm, name} = this.state
+        let {name, email, password, confirm} = this.state
         if(password !== confirm) window.alert('Please make sure the passwords match')
         if (password === confirm) this.setState({ success: true })
         this.props.createUser({name,email,password})
@@ -66,7 +66,6 @@ class SignUp extends Component {
                         <label>Password</label>
                         <input
                             type="password"
-                            textAlign='center'
                             onChange={this.handleOnChange}
                             value={this.state.password}
                             name='password'
@@ -77,7 +76,6 @@ class SignUp extends Component {
                         <label>Confirm Password</label>
                         <input
                             type="password"
-                            textAlign='center'
                             onChange={this.handleOnChange}
                             value={this.state.value}
                             name='confirm'
@@ -97,7 +95,7 @@ class SignUp extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    createUser: (email, password) => dispatch(createUser({email,password}))
+    createUser: (newUser) => dispatch(createUser(newUser))
 })
 
 export default connect(null, mapDispatchToProps)(SignUp)

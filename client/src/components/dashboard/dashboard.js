@@ -27,23 +27,23 @@ class Dashboard extends Component {
                 <div className="columns">
                     <div className="column"></div>
                         <div className="column is-8">
-                            <nav class="level">
-                                <div class="level-item has-text-centered">
+                            <nav className="level">
+                                <div className="level-item has-text-centered">
                                     <div>
-                                        <p class="heading">Jobs applied to</p>
-                                        <p class="title">200</p>
+                                        <p className="heading">Jobs applied to</p>
+                                        <p className="title">200</p>
                                     </div>
                                 </div>
-                            <div class="level-item has-text-centered">
+                            <div className="level-item has-text-centered">
                                 <div>
-                                    <p class="heading">Need to follow-up</p>
-                                    <p class="title">25</p>
+                                    <p className="heading">Need to follow-up</p>
+                                    <p className="title">25</p>
                                 </div>
                             </div>
-                            <div class="level-item has-text-centered">
+                            <div className="level-item has-text-centered">
                                 <div>
-                                    <p class="heading">Upcoming interviews</p>
-                                    <p class="title">3</p>
+                                    <p className="heading">Upcoming interviews</p>
+                                    <p className="title">3</p>
                                 </div>
                             </div>
                         </nav>

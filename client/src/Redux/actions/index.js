@@ -9,17 +9,13 @@ export const removeJob = job => dispatch => {
     dispatch({ type: REMOVE_JOB, payload: job})
 }
 
-export const createUser = (name,email,password) => dispatch => {
-    axios.post('http://localhost:5000/api/users',{
-        name,
-        email,
-        password
-    })
+export const createUser = (newUser) => dispatch => {
+    console.log(newUser)
+    axios.post('http://localhost:5000/api/users',newUser )
     .then(res => {
         console.log(res.data)
-    }
-        // dispatch({ type: CREATE_USER, payload: email })
-    )
+        dispatch({ type: CREATE_USER, payload: res.data })
+    })
 }
 
 export const newJob = job => dispatch => {
