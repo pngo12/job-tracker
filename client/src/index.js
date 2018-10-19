@@ -9,6 +9,7 @@ import rootReducer from './Redux/reducer'
 import Dashboard from './components/dashboard/dashboard'
 import Signup from './components/forms/signup'
 import Login from './components/forms/login'
+import AddJob from './components/forms/newjob'
 import thunk from 'redux-thunk'
 
 
@@ -30,6 +31,7 @@ ReactDOM.render(
                     <Route path="/dashboard" component={Dashboard} />
                     <Route path="/signup" component={Signup} />
                     <Route path="/login" component={Login} />
+                    <Route path="/newjob" component={AddJob} />
                 </Switch> 
             </BrowserRouter>
         </BrowserRouter>

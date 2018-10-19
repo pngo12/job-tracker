@@ -15,12 +15,13 @@ class Login extends Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
+    handleSubmit = () => {
+
+    }
+
     render() {
         if (this.state.success === true) {
             return <Redirect to='/dashboard' />
-        }
-        if (this.state.login === true) {
-            return <Redirect to='/login' />
         }
         return (
             <section className="section is-large">
