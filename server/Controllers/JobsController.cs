@@ -9,11 +9,11 @@ namespace server.Controllers
 {
   [Route("api/jobs")]
   [ApiController]
-  public class JobssController : ControllerBase
+  public class JobsController : ControllerBase
   {
     private TrackerContext _context;
 
-    public JobssController(TrackerContext context)
+    public JobsController(TrackerContext context)
     {
       _context = context;
     }
