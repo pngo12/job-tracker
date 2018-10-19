@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import {createUser} from '../../Redux/actions'
+import { createUser } from '../../Redux/actions'
+import { handleOnChange } from '../utilities/util'
 
 class Login extends Component {
     state = {
@@ -9,14 +10,6 @@ class Login extends Component {
         password: '',
         success: false,
         login: false
-    }
-
-    handleOnChange = e => {
-        this.setState({ [e.target.name]: e.target.value })
-    }
-
-    handleSubmit = () => {
-
     }
 
     render() {
@@ -34,7 +27,7 @@ class Login extends Component {
                                 <label>Email</label>
                                 <input
                                     type="email"
-                                    onChange={this.handleOnChange}
+                                    onChange={handleOnChange.bind(this)}
                                     value={this.state.email}
                                     name='email'
                                     className="input"
@@ -45,7 +38,7 @@ class Login extends Component {
                                 <input
                                     type="password"
                                     textAlign='center'
-                                    onChange={this.handleOnChange}
+                                    onChange={handleOnChange.bind(this)}
                                     value={this.state.password}
                                     name='password'
                                     className="input"
@@ -57,7 +50,6 @@ class Login extends Component {
                     <div className="column is-4"></div>
                 </div>
             </section>
-
         );
     }
 }

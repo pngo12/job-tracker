@@ -1,9 +1,9 @@
+import axios from 'axios'
 import {
     REMOVE_JOB,
     CREATE_USER,
     NEW_JOB
 } from '../constants'
-import axios from 'axios'
 
 export const removeJob = index => dispatch => {
     dispatch({ type: REMOVE_JOB, payload: index})
@@ -24,11 +24,11 @@ export const newJob = job => dispatch => {
         type: NEW_JOB,
         payload: job
     })
-    // axios.post('http://localhost:5000/api/jobs', job)
-    // .then(res => {
-    //     dispatch({
-    //         type: NEW_JOB,
-    //         payload: res.data, job
-    //     })
-    // })
+    axios.post('http://localhost:5000/api/jobs', job)
+    .then(res => {
+        dispatch({
+            type: NEW_JOB,
+            payload: res.data, job
+        })
+    })
 }
