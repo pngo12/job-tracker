@@ -95,7 +95,7 @@ class SignUp extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    createUser: (newUser) => dispatch(createUser(newUser))
+    createUser: newUser => dispatch(createUser(newUser))
 })
 
 export default connect(null, mapDispatchToProps)(SignUp)

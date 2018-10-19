@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import {newJob} from '../../Redux/actions'
+import {Redirect} from 'react-router-dom'
 
 class AddJob extends Component {
     state = {
@@ -8,7 +9,8 @@ class AddJob extends Component {
         dateApplied: '',
         linkToJob: '',
         jobStatus: '',
-        notes: ''
+        notes: '',
+        redirect: false
     }
 
     handleOnChange = e => {
@@ -18,11 +20,21 @@ class AddJob extends Component {
         })
     }
 
-    submitJob = () => {
-
+    submitJob = e => {
+        e.preventDefault()
+        let { companyName, 
+            dateApplied,
+            linkToJob,
+            jobStatus,
+            notes } = this.state;
+        this.props.newJob({companyName, dateApplied, linkToJob, jobStatus, notes})
+        this.setState({ redirect: true})
     }
 
     render() {
+        if(this.state.redirect === true){
+            return <Redirect to='/dashboard' />
+        }
         return (
             <section className="section is-large">
                 <div className="columns">
@@ -51,7 +63,6 @@ class AddJob extends Component {
                                 <div className="field">
                                     <label className="subtitle">Link to posting</label>
                                     <input
-                                        textAlign='center'
                                         onChange={this.handleOnChange}
                                         value={this.state.linkToJob}
                                         name="linkToJob"
@@ -60,8 +71,8 @@ class AddJob extends Component {
                                 </div>
                                 <div className="select">
                                     <label>Current Status</label>
-                                            <select value={this.state.jobStatus} onChange={this.handleOnChange}>
-                                            <option selected value=''></option>
+                                            <select value={this.state.jobStatus} onChange={this.handleOnChange.bind(this)}>
+                                            <option default value=''></option>
                                             <option value='0'>Applied</option>
                                             <option value='1'>Call Back</option>
                                             <option value='2'>Phone Interview</option>
