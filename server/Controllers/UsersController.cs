@@ -28,13 +28,13 @@ namespace server.Controllers
       {
         return NotFound();
       }
-      return Ok(_context.users.Include(j => j.job).ToList());
+      return Ok(_context.users.ToList());
     }
 
     [HttpGet("{id}", Name = "Getuser")]
     public ActionResult<Users> GetById(int id)
     {
-      Users item = _context.users.Where(u => u.user_id == id).Include(j => j.job).FirstOrDefault();
+      Users item = _context.users.Where(u => u.user_id == id).FirstOrDefault();
       if (item == null)
       {
         return NotFound();
